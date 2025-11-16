@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Sequences -->
+        <record id="seq_hotel_reservation" model="ir.sequence">
+            <field name="name">Hotel Reservation</field>
+            <field name="code">hotel.reservation</field>
+            <field name="prefix">RES</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="seq_hotel_meal_order" model="ir.sequence">
+            <field name="name">Hotel Meal Order</field>
+            <field name="code">hotel.meal.order</field>
+            <field name="prefix">MEAL</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="seq_hotel_transport" model="ir.sequence">
+            <field name="name">Hotel Transport</field>
+            <field name="code">hotel.transport</field>
+            <field name="prefix">TRANS</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="seq_hotel_housekeeping" model="ir.sequence">
+            <field name="name">Hotel Housekeeping</field>
+            <field name="code">hotel.housekeeping</field>
+            <field name="prefix">HK</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <record id="seq_hotel_folio" model="ir.sequence">
+            <field name="name">Hotel Folio</field>
+            <field name="code">hotel.folio</field>
+            <field name="prefix">FOL</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+    </data>
+</odoo>
+

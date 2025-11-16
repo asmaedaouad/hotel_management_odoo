@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Give admin user Hotel Manager permissions by default -->
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('hotel_management.group_hotel_manager'))]"/>
+        </record>
+
+    </data>
+</odoo>
+

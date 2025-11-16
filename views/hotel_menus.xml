@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Main Menu -->
+    <menuitem id="menu_hotel_root"
+              name="Hotel Management"
+              web_icon="hotel_management,static/description/icon.png"
+              action="action_hotel_reservation"
+              sequence="10"/>
+
+    <!-- Dashboard - TODO: Create dashboard later -->
+    <!-- <menuitem id="menu_hotel_dashboard"
+              name="Dashboard"
+              parent="menu_hotel_root"
+              action="action_hotel_dashboard"
+              sequence="1"/> -->
+
+    <!-- Operations Menu -->
+    <menuitem id="menu_hotel_operations" 
+              name="Operations" 
+              parent="menu_hotel_root" 
+              sequence="10"/>
+
+    <menuitem id="menu_hotel_reservations" 
+              name="Reservations" 
+              parent="menu_hotel_operations" 
+              action="action_hotel_reservation"
+              sequence="1"/>
+
+    <menuitem id="menu_hotel_customers" 
+              name="Customers" 
+              parent="menu_hotel_operations" 
+              action="action_hotel_customer"
+              sequence="2"/>
+
+    <menuitem id="menu_hotel_rooms"
+              name="Rooms"
+              parent="menu_hotel_operations"
+              action="action_hotel_room"
+              sequence="3"/>
+
+    <menuitem id="menu_hotel_housekeeping"
+              name="Housekeeping"
+              parent="menu_hotel_operations"
+              action="action_hotel_housekeeping"
+              sequence="4"/>
+
+    <menuitem id="menu_hotel_folios"
+              name="Folios/Bills"
+              parent="menu_hotel_operations"
+              action="action_hotel_folio"
+              sequence="5"/>
+
+    <!-- Services Menu -->
+    <menuitem id="menu_hotel_services" 
+              name="Services" 
+              parent="menu_hotel_root" 
+              sequence="20"/>
+
+    <menuitem id="menu_hotel_meals" 
+              name="Meal Orders" 
+              parent="menu_hotel_services" 
+              action="action_hotel_meal_order"
+              sequence="1"/>
+
+    <menuitem id="menu_hotel_transport" 
+              name="Transport" 
+              parent="menu_hotel_services" 
+              action="action_hotel_transport"
+              sequence="2"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_hotel_configuration" 
+              name="Configuration" 
+              parent="menu_hotel_root" 
+              sequence="100"
+              groups="group_hotel_manager"/>
+
+    <menuitem id="menu_hotel_room_types" 
+              name="Room Types" 
+              parent="menu_hotel_configuration" 
+              action="action_hotel_room_type"
+              sequence="1"/>
+
+    <menuitem id="menu_hotel_amenities" 
+              name="Amenities" 
+              parent="menu_hotel_configuration" 
+              action="action_hotel_amenity"
+              sequence="2"/>
+
+    <menuitem id="menu_hotel_meal_types"
+              name="Meal Types"
+              parent="menu_hotel_configuration"
+              action="action_hotel_meal_type"
+              sequence="3"/>
+
+    <menuitem id="menu_hotel_pricing_rules"
+              name="Pricing Rules"
+              parent="menu_hotel_configuration"
+              action="action_hotel_pricing_rule"
+              sequence="4"/>
+
+</odoo>
+

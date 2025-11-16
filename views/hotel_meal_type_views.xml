@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Meal Type Tree View -->
+    <record id="view_hotel_meal_type_tree" model="ir.ui.view">
+        <field name="name">hotel.meal.type.tree</field>
+        <field name="model">hotel.meal.type</field>
+        <field name="arch" type="xml">
+            <tree string="Meal Types">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="price" widget="monetary"/>
+                <field name="vegetarian" widget="boolean_toggle"/>
+                <field name="vegan" widget="boolean_toggle"/>
+                <field name="gluten_free" widget="boolean_toggle"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Meal Type Form View -->
+    <record id="view_hotel_meal_type_form" model="ir.ui.view">
+        <field name="name">hotel.meal.type.form</field>
+        <field name="model">hotel.meal.type</field>
+        <field name="arch" type="xml">
+            <form string="Meal Type">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Meal Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="sequence"/>
+                            <field name="price" widget="monetary"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="available_from" widget="float_time"/>
+                            <field name="available_to" widget="float_time"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Dietary Information">
+                        <group>
+                            <field name="vegetarian"/>
+                            <field name="vegan"/>
+                        </group>
+                        <group>
+                            <field name="gluten_free"/>
+                            <field name="halal"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Description of the meal..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Meal Type Kanban View -->
+    <record id="view_hotel_meal_type_kanban" model="ir.ui.view">
+        <field name="name">hotel.meal.type.kanban</field>
+        <field name="model">hotel.meal.type</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="category">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="price"/>
+                <field name="category"/>
+                <field name="image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('hotel.meal.type', 'image', record.id.raw_value)" alt="Meal"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="category"/>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="price" widget="monetary"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Meal Type Action -->
+    <record id="action_hotel_meal_type" model="ir.actions.act_window">
+        <field name="name">Meal Types</field>
+        <field name="res_model">hotel.meal.type</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first meal type
+            </p>
+            <p>
+                Define meals and beverages available in your hotel.
+            </p>
+        </field>
+    </record>
+
+</odoo>
+

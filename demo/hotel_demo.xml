@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Demo Room Types -->
+        <record id="room_type_standard" model="hotel.room.type">
+            <field name="name">Standard Room</field>
+            <field name="code">STD</field>
+            <field name="capacity">2</field>
+            <field name="base_price">100.00</field>
+            <field name="size">25</field>
+            <field name="bed_type">double</field>
+            <field name="amenity_ids" eval="[(6, 0, [ref('amenity_wifi'), ref('amenity_ac'), ref('amenity_tv')])]"/>
+        </record>
+
+        <record id="room_type_deluxe" model="hotel.room.type">
+            <field name="name">Deluxe Room</field>
+            <field name="code">DLX</field>
+            <field name="capacity">2</field>
+            <field name="base_price">150.00</field>
+            <field name="size">35</field>
+            <field name="bed_type">queen</field>
+            <field name="amenity_ids" eval="[(6, 0, [ref('amenity_wifi'), ref('amenity_ac'), ref('amenity_tv'), ref('amenity_minibar'), ref('amenity_balcony')])]"/>
+        </record>
+
+        <record id="room_type_suite" model="hotel.room.type">
+            <field name="name">Executive Suite</field>
+            <field name="code">STE</field>
+            <field name="capacity">4</field>
+            <field name="base_price">300.00</field>
+            <field name="size">60</field>
+            <field name="bed_type">suite</field>
+            <field name="amenity_ids" eval="[(6, 0, [ref('amenity_wifi'), ref('amenity_ac'), ref('amenity_tv'), ref('amenity_minibar'), ref('amenity_balcony'), ref('amenity_safe'), ref('amenity_bathtub')])]"/>
+        </record>
+
+        <!-- Demo Rooms -->
+        <record id="room_101" model="hotel.room">
+            <field name="room_number">101</field>
+            <field name="room_type_id" ref="room_type_standard"/>
+            <field name="floor">1</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="room_102" model="hotel.room">
+            <field name="room_number">102</field>
+            <field name="room_type_id" ref="room_type_standard"/>
+            <field name="floor">1</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="room_201" model="hotel.room">
+            <field name="room_number">201</field>
+            <field name="room_type_id" ref="room_type_deluxe"/>
+            <field name="floor">2</field>
+            <field name="state">available</field>
+        </record>
+
+        <record id="room_301" model="hotel.room">
+            <field name="room_number">301</field>
+            <field name="room_type_id" ref="room_type_suite"/>
+            <field name="floor">3</field>
+            <field name="state">available</field>
+        </record>
+
+        <!-- Demo Meal Types -->
+        <record id="meal_breakfast_continental" model="hotel.meal.type">
+            <field name="name">Continental Breakfast</field>
+            <field name="category">breakfast</field>
+            <field name="price">15.00</field>
+            <field name="available_from">6.0</field>
+            <field name="available_to">11.0</field>
+        </record>
+
+        <record id="meal_lunch_buffet" model="hotel.meal.type">
+            <field name="name">Lunch Buffet</field>
+            <field name="category">lunch</field>
+            <field name="price">25.00</field>
+            <field name="available_from">12.0</field>
+            <field name="available_to">15.0</field>
+        </record>
+
+        <record id="meal_dinner_alacarte" model="hotel.meal.type">
+            <field name="name">Dinner à la Carte</field>
+            <field name="category">dinner</field>
+            <field name="price">35.00</field>
+            <field name="available_from">18.0</field>
+            <field name="available_to">23.0</field>
+        </record>
+
+    </data>
+</odoo>
+

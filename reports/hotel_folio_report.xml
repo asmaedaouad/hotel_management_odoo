@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Report Action -->
+    <record id="action_report_hotel_folio" model="ir.actions.report">
+        <field name="name">Guest Folio</field>
+        <field name="model">hotel.folio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hotel_management.report_folio_document</field>
+        <field name="report_file">hotel_management.report_folio_document</field>
+        <field name="binding_model_id" ref="model_hotel_folio"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Report Template -->
+    <template id="report_folio_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Guest Folio</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Folio Number:</strong>
+                                <p t-field="o.name"/>
+                                <strong>Date:</strong>
+                                <p t-field="o.date"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Status:</strong>
+                                <p t-field="o.state"/>
+                            </div>
+                        </div>
+                        
+                        <h4>Guest Information</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Name:</strong>
+                                <p t-field="o.customer_id.name"/>
+                                <strong>Room:</strong>
+                                <p t-field="o.room_id.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Reservation:</strong>
+                                <p t-field="o.reservation_id.name"/>
+                            </div>
+                        </div>
+                        
+                        <h4>Charges</h4>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th class="text-right">Qty</th>
+                                    <th class="text-right">Unit Price</th>
+                                    <th class="text-right">Subtotal</th>
+                                    <th class="text-right">Tax</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.line_ids" t-as="line">
+                                    <td><span t-field="line.date"/></td>
+                                    <td><span t-field="line.description"/></td>
+                                    <td class="text-right"><span t-field="line.quantity"/></td>
+                                    <td class="text-right"><span t-field="line.price_unit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                    <td class="text-right"><span t-field="line.subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                    <td class="text-right"><span t-field="line.tax_amount" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                    <td class="text-right"><span t-field="line.total" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="row">
+                            <div class="col-6 offset-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <td><strong>Subtotal:</strong></td>
+                                        <td class="text-right"><span t-field="o.subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tax:</strong></td>
+                                        <td class="text-right"><span t-field="o.tax_amount" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                    </tr>
+                                    <tr class="border-black">
+                                        <td><strong>Total Amount:</strong></td>
+                                        <td class="text-right"><strong><span t-field="o.total_amount" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Amount Paid:</strong></td>
+                                        <td class="text-right"><span t-field="o.amount_paid" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                    </tr>
+                                    <tr class="border-black">
+                                        <td><strong>Balance Due:</strong></td>
+                                        <td class="text-right"><strong><span t-field="o.amount_due" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div t-if="o.notes" class="mt32">
+                            <h4>Notes</h4>
+                            <p t-field="o.notes"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
+

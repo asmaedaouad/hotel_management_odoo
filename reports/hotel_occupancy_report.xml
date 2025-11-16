@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Occupancy Report - Placeholder for future implementation -->
+    <record id="action_hotel_occupancy_report" model="ir.actions.act_window">
+        <field name="name">Occupancy Report</field>
+        <field name="res_model">hotel.reservation</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="context">{'search_default_group_checkin': 1}</field>
+    </record>
+
+</odoo>
+

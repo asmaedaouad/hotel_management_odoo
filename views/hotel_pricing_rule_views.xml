@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Pricing Rule Tree View -->
+    <record id="view_hotel_pricing_rule_tree" model="ir.ui.view">
+        <field name="name">hotel.pricing.rule.tree</field>
+        <field name="model">hotel.pricing.rule</field>
+        <field name="arch" type="xml">
+            <tree string="Pricing Rules">
+                <field name="priority" widget="handle"/>
+                <field name="name"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="price_type"/>
+                <field name="percentage" invisible="price_type != 'percentage'"/>
+                <field name="fixed_price" invisible="price_type != 'fixed'" widget="monetary"/>
+                <field name="amount" invisible="price_type != 'amount'" widget="monetary"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Pricing Rule Form View -->
+    <record id="view_hotel_pricing_rule_form" model="ir.ui.view">
+        <field name="name">hotel.pricing.rule.form</field>
+        <field name="model">hotel.pricing.rule</field>
+        <field name="arch" type="xml">
+            <form string="Pricing Rule">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g., Summer Season 2024"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="priority"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <group string="Applicable To">
+                        <field name="room_type_ids" widget="many2many_tags"/>
+                        <p colspan="2" class="text-muted">Leave empty to apply to all room types</p>
+                    </group>
+                    <group string="Days of Week">
+                        <group>
+                            <field name="apply_on_monday"/>
+                            <field name="apply_on_tuesday"/>
+                            <field name="apply_on_wednesday"/>
+                            <field name="apply_on_thursday"/>
+                        </group>
+                        <group>
+                            <field name="apply_on_friday"/>
+                            <field name="apply_on_saturday"/>
+                            <field name="apply_on_sunday"/>
+                        </group>
+                    </group>
+                    <group string="Pricing">
+                        <group>
+                            <field name="price_type"/>
+                            <field name="fixed_price" invisible="price_type != 'fixed'" widget="monetary"/>
+                            <field name="percentage" invisible="price_type != 'percentage'"/>
+                            <field name="amount" invisible="price_type != 'amount'" widget="monetary"/>
+                        </group>
+                        <group>
+                            <field name="min_stay"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Description of this pricing rule..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Pricing Rule Action -->
+    <record id="action_hotel_pricing_rule" model="ir.actions.act_window">
+        <field name="name">Pricing Rules</field>
+        <field name="res_model">hotel.pricing.rule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first pricing rule
+            </p>
+            <p>
+                Define seasonal pricing, weekend rates, and special offers.
+            </p>
+        </field>
+    </record>
+
+</odoo>
+

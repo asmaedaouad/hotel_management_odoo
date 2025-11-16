@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Transport Tree View -->
+    <record id="view_hotel_transport_tree" model="ir.ui.view">
+        <field name="name">hotel.transport.tree</field>
+        <field name="model">hotel.transport</field>
+        <field name="arch" type="xml">
+            <tree string="Transport Services">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="trip_type"/>
+                <field name="pickup_date"/>
+                <field name="vehicle_name"/>
+                <field name="driver_id"/>
+                <field name="price" widget="monetary"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Transport Form View -->
+    <record id="view_hotel_transport_form" model="ir.ui.view">
+        <field name="name">hotel.transport.form</field>
+        <field name="model">hotel.transport</field>
+        <field name="arch" type="xml">
+            <form string="Transport Service">
+                <header>
+                    <button name="action_confirm" string="Confirm" 
+                            type="object" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_start" string="Start Trip" 
+                            type="object" class="oe_highlight"
+                            invisible="state != 'confirmed'"/>
+                    <button name="action_complete" string="Complete" 
+                            type="object" class="oe_highlight"
+                            invisible="state != 'in_progress'"/>
+                    <button name="action_cancel" string="Cancel" 
+                            type="object" 
+                            invisible="state in ['completed', 'cancelled']"/>
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="draft,confirmed,in_progress,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Booking Information">
+                            <field name="customer_id"/>
+                            <field name="reservation_id"/>
+                            <field name="booking_date"/>
+                            <field name="trip_type"/>
+                        </group>
+                        <group string="Vehicle &amp; Driver">
+                            <field name="vehicle_name"/>
+                            <field name="driver_id"/>
+                            <field name="passengers"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Trip Details">
+                            <field name="pickup_date"/>
+                            <field name="return_date"/>
+                            <field name="pickup_location"/>
+                            <field name="dropoff_location"/>
+                        </group>
+                        <group string="Pricing">
+                            <field name="distance"/>
+                            <field name="duration" widget="float_time"/>
+                            <field name="price" widget="monetary"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Flight Information" invisible="trip_type not in ['airport_pickup', 'airport_dropoff']">
+                        <group>
+                            <field name="flight_number"/>
+                            <field name="flight_time"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Special Requests">
+                            <field name="special_requests" placeholder="Special requests from the customer..."/>
+                        </page>
+                        <page string="Internal Notes">
+                            <field name="notes" placeholder="Internal notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Transport Calendar View -->
+    <record id="view_hotel_transport_calendar" model="ir.ui.view">
+        <field name="name">hotel.transport.calendar</field>
+        <field name="model">hotel.transport</field>
+        <field name="arch" type="xml">
+            <calendar string="Transport Services" date_start="pickup_date" date_stop="return_date"
+                      color="state" mode="month">
+                <field name="customer_id"/>
+                <field name="vehicle_name"/>
+                <field name="trip_type"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Transport Action -->
+    <record id="action_hotel_transport" model="ir.actions.act_window">
+        <field name="name">Transport Services</field>
+        <field name="res_model">hotel.transport</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first transport booking
+            </p>
+            <p>
+                Manage tourist transport services for hotel guests.
+            </p>
+        </field>
+    </record>
+
+</odoo>
+

@@ -1,0 +1,68 @@
+========================================
+HOTEL MANAGEMENT MODULE - INSTALLATION
+========================================
+
+The module has been created successfully!
+Now follow these steps to install it in Odoo:
+
+STEP 1: ACTIVATE DEVELOPER MODE
+--------------------------------
+1. Open your browser and go to: http://localhost:8069
+2. Login to Odoo with your admin credentials
+3. Click on "Settings" in the main menu
+4. Scroll down to the bottom
+5. Click on "Activate the developer mode" link
+   (You should see a bug icon appear in the top right)
+
+STEP 2: UPDATE APPS LIST
+-------------------------
+1. Click on "Apps" in the main menu
+2. In the search bar at the top, remove any filters
+3. Click on the three dots (⋮) menu in the top right
+4. Select "Update Apps List"
+5. Click "Update" in the confirmation dialog
+6. Wait for the update to complete
+
+STEP 3: FIND AND INSTALL THE MODULE
+------------------------------------
+1. Still in the "Apps" menu
+2. In the search bar, type: hotel
+3. You should see "Hotel Management" module appear
+4. Click the "Install" button on the module card
+5. Wait for installation to complete (may take 1-2 minutes)
+
+STEP 4: VERIFY INSTALLATION
+----------------------------
+1. After installation, you should see a new menu item "Hotel Management" in the main menu
+2. Click on it to access the module
+3. You should see: Dashboard, Operations, Services, Configuration
+
+TROUBLESHOOTING
+----------------
+
+If you don't see the module after Step 2:
+
+Option A - Check the filters:
+1. In Apps menu, make sure no filters are active
+2. Try searching for "hotel" (lowercase)
+3. Try clicking "Extra" filter and selecting "Not Installed"
+
+Option B - Restart Odoo completely:
+1. Open PowerShell/Command Prompt
+2. Navigate to: cd C:\Users\asmae\odoo-docker
+3. Run: docker-compose restart
+4. Wait 30 seconds
+5. Go back to Step 1
+
+Option C - Check module is in correct location:
+The module should be at:
+C:\Users\asmae\odoo-docker\ehsah_addons\hotel_management\
+
+If it's there, the module will be detected!
+
+NEED HELP?
+----------
+If you still can't find it, let me know and I'll help troubleshoot!
+
+After installation, check the QUICK_START.md file for how to use the module.
+
