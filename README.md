@@ -1,157 +1,160 @@
-# Hotel Management Module for Odoo 17
+# 🏨 Hotel Management Module for Odoo 17
 
-A comprehensive hotel management system for Odoo 17 that handles all aspects of hotel operations.
+[![Odoo Version](https://img.shields.io/badge/Odoo-17.0-blue.svg)](https://www.odoo.com/)
+[![License](https://img.shields.io/badge/License-LGPL--3-green.svg)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+[![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg)](https://www.python.org/)
 
-## Features
+A comprehensive, professional-grade hotel management system for Odoo 17 that handles all aspects of hotel operations including room management, reservations, housekeeping, meal services, and tourist transport.
 
-### 1. Room Management
-- **Room Types**: Define different types of rooms (Standard, Deluxe, Suite, etc.)
-- **Room Configuration**: Manage individual rooms with floor numbers, amenities, and status
-- **Amenities**: Track room amenities (WiFi, AC, TV, Mini Bar, etc.)
-- **Room Status**: Available, Occupied, Reserved, Maintenance, Cleaning
+## ✨ Features
 
-### 2. Reservation Management
-- **Online Reservations**: Accept reservations from multiple sources (Direct, Website, Phone, Email, Agency)
-- **Booking Workflow**: Draft → Confirmed → Checked In → Checked Out
-- **Guest Information**: Track adults, children, and special requests
-- **Pricing**: Automatic calculation of nights, taxes, and total amounts
-- **Payment Tracking**: Monitor payment status (Unpaid, Partial, Paid, Refunded)
-- **Calendar View**: Visual representation of reservations
+### 🏢 Core Operations
+- **Room Management** - Complete room inventory with types, amenities, and real-time status tracking
+- **Reservation System** - Full booking workflow with automatic pricing and conflict detection
+- **Customer Management** - Detailed guest profiles with history and preferences
+- **Housekeeping** - Task management with priority system and quality checklists
+- **Folio/Billing** - Professional guest billing with line-by-line charge tracking
 
-### 3. Customer Management
-- **Customer Profiles**: Store detailed customer information
-- **Customer Types**: Individual, Corporate, Travel Agency
-- **Identification**: Track ID type, number, and expiry
-- **VIP Customers**: Mark and track VIP guests
-- **Statistics**: View total reservations and spending per customer
-- **Preferences**: Store special requests and preferences
+### 🍽️ Services
+- **Meal Management** - Room service and restaurant orders with dietary information
+- **Transport Services** - Tourist vehicle booking and management
 
-### 4. Meal Management
-- **Meal Types**: Define breakfast, lunch, dinner, snacks, and beverages
-- **Dietary Information**: Track vegetarian, vegan, gluten-free, halal options
-- **Meal Orders**: Room service and restaurant orders
-- **Order Workflow**: Draft → Confirmed → Preparing → Ready → Delivered
-- **Pricing**: Automatic calculation with service charges and taxes
+### ⚙️ Configuration
+- **Dynamic Pricing Rules** - Seasonal pricing, weekend rates, and special offers
+- **Room Types** - Flexible room categorization with custom amenities
+- **Meal Types** - Complete menu configuration
 
-### 5. Transport Services
-- **Fleet Integration**: Uses Odoo's Fleet module for vehicle management
-- **Trip Types**: Airport pickup/dropoff, city tours, excursions, transfers, hourly rentals
-- **Booking Management**: Track pickup/dropoff locations, dates, and times
-- **Driver Assignment**: Assign drivers to transport bookings
-- **Flight Information**: Track flight details for airport transfers
-- **Pricing**: Distance and duration-based pricing
+## 📊 Module Statistics
 
-### 6. Security & Access Control
-- **User Groups**:
-  - Hotel User: View and create reservations
-  - Hotel Receptionist: Manage reservations and check-ins/outs
-  - Hotel Manager: Full access to all features
-- **Record Rules**: Data access based on user roles
+- **12 Models** - Complete data structure
+- **50+ Views** - Tree, Form, Kanban, Calendar views
+- **15 Menu Items** - Well-organized navigation
+- **3 Professional Reports** - Reservation vouchers, folios, occupancy
+- **Automated Workflows** - Checkout → Housekeeping → Available
 
-### 7. Reporting
-- **Reservation Voucher**: Printable reservation confirmation
-- **Occupancy Reports**: Track room occupancy rates
-- **Revenue Reports**: Monitor hotel revenue
+## 🚀 Installation
 
-## Installation
+### Prerequisites
+- Odoo 17.0
+- Python 3.10+
+- PostgreSQL 12+
 
-1. Copy the `hotel_management` folder to your Odoo addons directory
-2. Update the apps list in Odoo
-3. Install the "Hotel Management" module
+### Quick Install
 
-## Configuration
+1. **Clone the repository**
+```bash
+git clone https://github.com/asmaedaouad/hotel_management_odoo.git
+cd hotel_management_odoo
+```
 
-### Initial Setup
+2. **Copy to Odoo addons directory**
+```bash
+cp -r hotel_management /path/to/odoo/addons/
+```
 
-1. **Configure Room Types**:
-   - Go to Hotel Management → Configuration → Room Types
-   - Create room types (Standard, Deluxe, Suite, etc.)
-   - Set pricing, capacity, and amenities
+3. **Restart Odoo**
+```bash
+sudo systemctl restart odoo
+# or
+./odoo-bin -c odoo.conf
+```
 
-2. **Add Amenities**:
-   - Go to Hotel Management → Configuration → Amenities
-   - Default amenities are pre-loaded (WiFi, AC, TV, etc.)
+4. **Install the module**
+- Go to Apps menu in Odoo
+- Update Apps List
+- Search for "Hotel Management"
+- Click Install
 
-3. **Create Rooms**:
-   - Go to Hotel Management → Operations → Rooms
-   - Add individual rooms with room numbers and types
+## 📚 Documentation
 
-4. **Configure Meal Types**:
-   - Go to Hotel Management → Configuration → Meal Types
-   - Define available meals and beverages
+- **[Installation Guide](INSTALLATION.md)** - Detailed installation instructions
+- **[Quick Start](QUICK_START.md)** - Get started in 5 minutes
+- **[User Guide](USER_GUIDE.md)** - Complete usage documentation
+- **[What's New](WHATS_NEW.md)** - Latest features and improvements
 
-5. **Setup Fleet Vehicles** (for transport services):
-   - Go to Fleet → Vehicles
-   - Add vehicles and mark them as "Available for Hotel Service"
+## 🎯 Key Features Explained
 
-## Usage
+### Housekeeping Management
+- Automatic task creation after guest checkout
+- Priority-based task assignment
+- Quality control checklists
+- Time tracking and performance monitoring
+- Kanban board for visual management
 
-### Creating a Reservation
+### Dynamic Pricing
+- Seasonal rate adjustments
+- Weekend/weekday pricing
+- Special offers and discounts
+- Automatic price calculation on reservations
+- Priority-based rule application
 
-1. Go to Hotel Management → Operations → Reservations
-2. Click "Create"
-3. Select or create a customer
-4. Choose a room and dates
-5. Enter guest information
-6. Confirm the reservation
-7. Check in the guest on arrival
-8. Check out on departure
+### Guest Folio System
+- Complete billing management
+- Multiple charge types (room, meals, services)
+- Automatic tax calculation
+- Payment tracking
+- Professional printable bills
 
-### Managing Meal Orders
+## 🔄 Workflows
 
-1. Go to Hotel Management → Services → Meal Orders
-2. Create a new order linked to a reservation
-3. Add meal items
-4. Confirm and track the order through preparation and delivery
+```
+Guest Checkout → Housekeeping Task Created → Task Completed → Room Available
+Reservation Created → Pricing Rules Applied → Price Calculated → Booking Confirmed
+```
 
-### Booking Transport
 
-1. Go to Hotel Management → Services → Transport
-2. Create a new booking
-3. Select customer, vehicle, and trip details
-4. Confirm and track the booking
 
-## Technical Details
-
-### Models
-
-- `hotel.room.type`: Room type configuration
-- `hotel.amenity`: Room amenities
-- `hotel.room`: Individual rooms
-- `hotel.customer`: Customer information
-- `hotel.reservation`: Reservations and bookings
-- `hotel.meal.type`: Meal configuration
-- `hotel.meal.order`: Meal orders
-- `hotel.meal.order.line`: Meal order lines
-- `hotel.transport`: Transport bookings
+## 🛠️ Technical Details
 
 ### Dependencies
+- `base` - Odoo base module
+- `web` - Web interface
+- `mail` - Messaging and activities
+- `portal` - Customer portal
+- `website` - Website integration
 
-- base
-- web
-- mail
-- portal
-- website
-- fleet
+### Models
+- `hotel.room.type` - Room categories
+- `hotel.room` - Room inventory
+- `hotel.customer` - Guest profiles
+- `hotel.reservation` - Bookings
+- `hotel.housekeeping` - Cleaning tasks
+- `hotel.pricing.rule` - Dynamic pricing
+- `hotel.folio` - Guest billing
+- `hotel.meal.type` - Menu items
+- `hotel.meal.order` - Meal orders
+- `hotel.transport` - Vehicle bookings
+- And more...
 
-## Future Enhancements (Client Portal)
+## 🤝 Contributing
 
-The next phase will include:
-- Customer portal for online bookings
-- Room availability search
-- Online payment integration
-- Booking confirmation emails
-- Customer dashboard
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Support
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-For issues or questions, please contact the module author.
+## 📝 License
 
-## License
+This project is licensed under the LGPL-3 License - see the [LICENSE](LICENSE) file for details.
 
-LGPL-3
+## 👤 Author
 
-## Author
+**Asmae Daouad**
+- GitHub: [@asmaedaouad](https://github.com/asmaedaouad)
 
-Asmae
+## 🙏 Acknowledgments
+
+- Odoo Community for the amazing framework
+- All contributors and testers
+
+## 📞 Support
+
+For support, please open an issue in the GitHub repository or contact the author.
+
+---
+
+**Made with ❤️ for the hospitality industry**
 
